@@ -31,11 +31,13 @@ BuilderBlock({
 })
 export class AppComponent {
   constructor(private http: HttpClient, builder: BuilderService) {
-    builder.autoTrack = false;
+    // builder.autoTrack = false;
   } // Inject HttpClient service
 
+  builderService: BuilderService;
   ngOnInit() {
     this.fetchData();
+    this.builderService.autoTrack = false;
   }
 
   fetchData() {
