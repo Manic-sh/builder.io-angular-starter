@@ -26,6 +26,6 @@ import { CustomThingChildren } from "./with-children";
 })
 export class AppModule {
   constructor(builder: BuilderService) {
-    builder.autoTrack = true;
+    builder.autoTrack = false;
   }
 }
