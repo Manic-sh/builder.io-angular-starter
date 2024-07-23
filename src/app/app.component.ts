@@ -1,74 +1,76 @@
-import { BuilderBlock } from '@builder.io/angular';
-import { Component, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { BuilderBlock, BuilderService } from "@builder.io/angular";
+import { Component, Input } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
-import './with-children';
+import "./with-children";
 
 @Component({
-  selector: 'custom-thing',
-  template: 'Hello: {{name}}',
+  selector: "custom-thing",
+  template: "Hello: {{name}}",
 })
 export class CustomThing {
   @Input()
-  name = '';
+  name = "";
 }
 
 BuilderBlock({
-  tag: 'custom-thing',
-  name: 'Custom thing',
+  tag: "custom-thing",
+  name: "Custom thing",
   inputs: [
     {
-      name: 'name',
-      type: 'string',
+      name: "name",
+      type: "string",
     },
   ],
 })(CustomThing);
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  constructor(private http: HttpClient) {} // Inject HttpClient service
+  constructor(private http: HttpClient, builder: BuilderService) {
+    builder.autoTrack = false;
+  } // Inject HttpClient service
 
   ngOnInit() {
     this.fetchData();
   }
 
   fetchData() {
-    this.http.get<any>('https://randomuser.me/api?results=2').subscribe(
+    this.http.get<any>("https://randomuser.me/api?results=2").subscribe(
       (response) => {
         this.data = response; // Assign fetched data to 'data' variable
       },
       (error) => {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     );
   }
 
-  title = 'app';
-  
+  title = "app";
+
   options: any = {
     cacheSeconds: 1,
     data: {
-      locale: 'en-US',
+      locale: "en-US",
     },
   };
 
   data = {
-    property: 'hello',
+    property: "hello",
     fn: (text: string) => alert(text),
   };
-  context= {
+  context = {
     myFunction: (text: string) => alert(text),
   };
 
   load(event: any) {
-    console.log('load', event);
+    console.log("load", event);
   }
 
   error(event: any) {
-    console.log('error', event);
+    console.log("error", event);
   }
 }
