@@ -1,5 +1,7 @@
 import { BuilderBlock } from '@builder.io/angular';
 import { Component, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import './with-children';
 
 @Component({
@@ -28,7 +30,25 @@ BuilderBlock({
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  constructor(private http: HttpClient) {} // Inject HttpClient service
+
+  ngOnInit() {
+    this.fetchData();
+  }
+
+  fetchData() {
+    this.http.get<any>('https://randomuser.me/api?results=2').subscribe(
+      (response) => {
+        this.data = response; // Assign fetched data to 'data' variable
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      }
+    );
+  }
+
   title = 'app';
+  
   options: any = {
     cacheSeconds: 1,
     data: {
@@ -39,6 +59,9 @@ export class AppComponent {
   data = {
     property: 'hello',
     fn: (text: string) => alert(text),
+  };
+  context= {
+    myFunction: (text: string) => alert(text),
   };
 
   load(event: any) {

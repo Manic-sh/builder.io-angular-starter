@@ -1,0 +1,108 @@
+.territory-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #c5dddd;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.section-header {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2f4f4f;
+}
+
+.search-field,
+.select-field,
+.field {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-input,
+.select-input,
+.field-input,
+.status-input {
+    font: 400 14px Poppins, sans-serif;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #5f9ea0;
+}
+
+.search-btn,
+.clear-btn {
+    background-color: #5f9ea0;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.search-icon,
+.dropdown-icon,
+.clear-icon {
+    width: 22px;
+    height: auto;
+}
+
+.field-label {
+    font-weight: 600;
+    font-size: 16px;
+    color: #2f4f4f;
+}
+
+.discount-info {
+    font-size: 14px;
+    display: flex;
+    gap: 4px;
+}
+
+.status-section,
+.status-header {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2f4f4f;
+}
+
+.status-options {
+    display: flex;
+    gap: 15px;
+}
+
+.status-option {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.status-label {
+    font-size: 14px;
+    color: #2f4f4f;
+}
+
+.save-btn {
+    background-color: #2f4f4f;
+    color: #fff;
+    padding: 10px 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    align-self: flex-end;
+}
+
+@media (max-width: 991px) {
+    .territory-form {
+        flex-direction: column;
+    }
+
+    .search-field,
+    .select-field,
+    .field {
+        flex-direction: column;
+    }
+}
